@@ -1,0 +1,99 @@
+/* --- BACKGROUND AURORA --- */
+body {
+    margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; 
+    background: linear-gradient(125deg, #050a14, #0a192f, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Bintang Berkerlip */
+.star {
+    position: absolute; background: white; border-radius: 50%; opacity: 0.5;
+    animation: twinkle var(--duration) infinite;
+}
+@keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+/* ---UTAMA --- */
+.game-container {
+    position: relative; z-index: 2; width: 420px; 
+    background: rgba(255, 255, 255, 0.07);
+    padding: 20px; border-radius: 25px; 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center;
+}
+
+.header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.stat-box { background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 12px; border: 1px solid #FFD700; font-size: 0.8rem; color: #FFD700; font-weight: bold; }
+#gameCanvas { background-color: rgba(5, 10, 20, 0.8); border: 3px solid #FFD700; border-radius: 10px; display: block; margin: 0 auto; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+
+/* --- TOMBOL & MENU --- */
+.overlay-screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 10, 20, 0.95); display: flex; flex-direction: column;
+    justify-content: center; align-items: center; border-radius: 25px; z-index: 10;
+}
+
+.game-title { font-size: 2.2rem; color: #FFD700; margin: 0; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); }
+.menu-subtitle { color: #FFD700; font-weight: bold; margin-bottom: 15px; }
+
+.menu-controls { display: flex; flex-direction: column; gap: 12px; width: 240px; }
+
+.btn-main {
+    padding: 14px; font-weight: 800; border: none; border-radius: 50px; color: white;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.btn-start, .btn-play { background: linear-gradient(135deg, #11998e, #38ef7d); }
+.btn-rules { background: linear-gradient(135deg, #2980b9, #6dd5fa); }
+.btn-menu-exit { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+.btn-understand { background: linear-gradient(135deg, #f39c12, #f1c40f); width: 100%; margin-top: 10px; }
+
+.btn-main:hover { transform: scale(1.06) translateY(-3px); filter: brightness(1.1); box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2); }
+.btn-main:active { transform: scale(0.95); }
+
+/* Level Grid */
+.level-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
+.lvl-btn { 
+    width: 40px; height: 40px; background: rgba(255, 255, 255, 0.1); color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; cursor: pointer; transition: 0.3s;
+}
+.lvl-btn.active { background: #FFD700; color: black; font-weight: bold; box-shadow: 0 0 15px #FFD700; }
+
+/* --- MODAL ATURAN --- */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center; }
+.modal-content { 
+    background: #121826; border: 2px solid #FFD700; border-radius: 25px; padding: 25px; 
+    width: 85%; max-width: 340px; position: relative;
+}
+.rules-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+.rule-card { 
+    background: rgba(255, 255, 255, 0.05); padding: 12px; border-radius: 15px; 
+    display: flex; align-items: center; gap: 15px; border-left: 4px solid #FFD700;
+}
+.rule-emoji { font-size: 1.8rem; }
+.rule-text strong { color: #FFD700; display: block; font-size: 0.9rem; }
+.rule-text p { margin: 0; font-size: 0.75rem; color: #bdc3c7; }
+
+/* --- COPYRIGHTS --- */
+.menu-copyright { margin-top: 25px; font-size: 0.7rem; color: #777; font-style: italic; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; width: 80%; }
+.game-footer { position: fixed; bottom: 10px; width: 100%; text-align: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); z-index: 5; }
+.game-footer span { color: #FFD700; font-weight: bold; text-shadow: 0 0 8px rgba(255, 214, 0, 0.3); }
+
+/* Kontrol Pad */
+.controls { margin-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.mid-ctrl { display: flex; gap: 40px; }
+.control-btn { width: 55px; height: 55px; background: rgba(255, 255, 255, 0.1); border: 1px solid #333; color: white; border-radius: 50%; font-size: 1.2rem; cursor: pointer; }
+.snow { position: absolute; background: white; border-radius: 50%; top: -10px; animation: fall linear infinite; z-index: 3; }
+@keyframes fall { to { transform: translateY(100vh); } }

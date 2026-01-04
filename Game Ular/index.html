@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Christmas</title>
+    
+    <link rel="icon" href="snake_8686318.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="snow-container"></div>
+    
+    <div class="game-container">
+        <div class="header">
+            <div class="stat-box">HADIAH: <span id="score">0</span></div>
+            <div id="level-display">Level 1</div>
+            <div class="stat-box">TERBAIK: <span id="high-score">0</span></div>
+        </div>
+
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+        <div id="menu-screen" class="overlay-screen">
+            <h1 class="game-title">Festive Snake 🐍</h1>
+            <p class="menu-subtitle">Pilih Level & Tantanganmu!</p>
+            
+            <div class="level-grid">
+                <button class="lvl-btn active" onclick="setDifficulty(1)">1</button>
+                <button class="lvl-btn" onclick="setDifficulty(2)">2</button>
+                <button class="lvl-btn" onclick="setDifficulty(3)">3</button>
+                <button class="lvl-btn" onclick="setDifficulty(4)">4</button>
+                <button class="lvl-btn" onclick="setDifficulty(5)">5</button>
+                <button class="lvl-btn" onclick="setDifficulty(6)">6</button>
+                <button class="lvl-btn" onclick="setDifficulty(7)">7</button>
+                <button class="lvl-btn" onclick="setDifficulty(8)">8</button>
+                <button class="lvl-btn" onclick="setDifficulty(9)">9</button>
+                <button class="lvl-btn" onclick="setDifficulty(10)">10</button>
+            </div>
+            
+            <div class="menu-controls">
+                <button id="start-btn" class="btn-main btn-start" onclick="startGame()" style="display:none;">MULAI GAME 🎮</button>
+                <button id="rules-btn" class="btn-main btn-rules" onclick="toggleRules(true)">CARA BERMAIN 📖</button>
+            </div>
+
+            <div class="menu-copyright">Created by I Gusti Agung Ketut Agung</div>
+        </div>
+
+        <div id="rules-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="toggleRules(false)">&times;</span>
+                <h2 class="modal-header">🎄 Panduan Bermain</h2>
+                <div class="rules-list">
+                    <div class="rule-card">
+                        <span class="rule-emoji">🎁</span>
+                        <div class="rule-text"><strong>Hadiah Natal</strong><p>Skor +1 & tubuh memanjang.</p></div>
+                    </div>
+                    <div class="rule-card">
+                        <span class="rule-emoji">🪨</span>
+                        <div class="rule-text"><strong>Batu Bara</strong><p>Skor -2 & tubuh memendek.</p></div>
+                    </div>
+                    <div class="rule-card">
+                        <span class="rule-emoji">❄️</span>
+                        <div class="rule-text"><strong>Rintangan</strong><p>Jangan nabrak es atau dinding!</p></div>
+                    </div>
+                </div>
+                <button class="btn-main btn-understand" onclick="toggleRules(false)">SAYA MENGERTI! 🚀</button>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay-screen" style="display:none;">
+            <h2 id="status-text">GAME OVER!</h2>
+            <p>Skor Akhir: <span id="final-score">0</span></p>
+            <div class="overlay-buttons">
+                <button class="btn-main btn-play" onclick="startGame()">MAIN LAGI 🔄</button>
+                <button class="btn-main btn-menu-exit" onclick="backToMenu()">MENU UTAMA 🏠</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" onclick="handleTouch('UP')">▲</button>
+        <div class="mid-ctrl">
+            <button class="control-btn" onclick="handleTouch('LEFT')">◀</button>
+            <button class="control-btn" onclick="handleTouch('RIGHT')">▶</button>
+        </div>
+        <button class="control-btn" onclick="handleTouch('DOWN')">▼</button>
+    </div>
+
+    <footer class="game-footer">
+        <p>&copy; 2025 Snake Christmas. Crafted with ❤️ by <span>I Gusti Agung Ketut Agung</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
